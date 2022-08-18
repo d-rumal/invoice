@@ -1,0 +1,244 @@
+{
+	"info": {
+		"_postman_id": "0821013b-e83e-46da-bfc3-94563297f176",
+		"name": "invoice_management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18177392"
+	},
+	"item": [
+		{
+			"name": "Get company",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/company/13",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"company",
+						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add company",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "company_name",
+							"value": "{{$randomCompanyName}}",
+							"type": "text"
+						},
+						{
+							"key": "company_addr",
+							"value": "{{$randomStreetAddress}}",
+							"type": "text"
+						},
+						{
+							"key": "company_email",
+							"value": "{{$randomEmail}}",
+							"type": "text"
+						},
+						{
+							"key": "company_website",
+							"value": "{{$randomUrl}}",
+							"type": "text"
+						},
+						{
+							"key": "company_logo",
+							"type": "file",
+							"src": "/Users/darshan/Downloads/Starbucks_Corporation_Logo_2011.svg.webp"
+						},
+						{
+							"key": "company_phone",
+							"value": "{{$randomPhoneNumber}}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/company/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"company",
+						"add"
+					],
+					"query": [
+						{
+							"key": "company_id",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "company_name",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "company_addr",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "company_email",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "company_website",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "company_logo",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/order/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Order",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"product_name\": \"{{$randomProductName}}\",\n    \"product_desc\": \"{{$randomProductAdjective}}\",\n    \"product_rate\": \"{{$randomPrice}}\",\n    \"product_tax\": \"10\",\n    \"product_qty\": \"{{$randomPrice}}\",\n    \"invoice_id\": 1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/order/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"order",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Invoice",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/invoice/pdf/40",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"invoice",
+						"pdf",
+						"40"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Invoice",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const moment = require('moment');",
+							"pm.globals.set(\"today\",moment().format(\"YYYY-MM-DD hh:mm:ss\"));",
+							"",
+							"const gst = [5, 12, 18, 28];",
+							"pm.globals.set(\"tax\", gst[Math.floor(Math.random() * 4)]);",
+							"",
+							"pm.globals.set(\"qty\", Math.floor(Math.random() * 1000) + 1);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"recipent_name\": \"{{$randomFullName}}\",\n    \"recipent_addr\": \"{{$randomStreetAddress}}\",\n    \"recipent_email\": \"{{$randomEmail}}\",\n    \"recipent_phone\": \"{{$randomPhoneNumber}}\",\n    \"date\": \"{{today}}\",\n    \"company_id\": 11,\n    \"sub_total\": null,\n    \"total\": null,\n    \"orders\": [\n        {\n            \"product_name\": \"{{$randomProductName}}\",\n            \"product_desc\": \"{{$randomLoremParagraph}}\",\n            \"product_rate\": {{$randomPrice}},\n            \"product_tax\": 5,\n            \"product_qty\": 5\n        },\n        {\n            \"product_name\": \"{{$randomProductName}}\",\n            \"product_desc\": \"{{$randomLoremParagraph}}\",\n            \"product_rate\": {{$randomPrice}},\n            \"product_tax\": 18,\n            \"product_qty\": 50\n        },\n        {\n            \"product_name\": \"{{$randomProductName}}\",\n            \"product_desc\": \"{{$randomLoremParagraph}}\",\n            \"product_rate\": {{$randomPrice}},\n            \"product_tax\": 12,\n            \"product_qty\": 60\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/invoice/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"invoice",
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
