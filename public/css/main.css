@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;900&display=swap');
+
+* {
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+
+:root {
+    --outerPadding: 30px;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-rows: 30% 40% 30%;
+}
+
+.grid_header {
+    display: grid;
+    grid-template-columns: 40% 20% 40%;
+    grid-template-rows: 50% 50%;
+    padding: var(--outerPadding);
+}
+
+.grid_company {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-bottom: 20px;
+}
+
+.grid_invoice {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.grid_bill-to {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-top: 20px;
+}
+
+img {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.vertical_line {
+    border-right: 1px solid black;
+}
+
+.company_details {
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.bold {
+    font-weight: 900;
+}
+
+.light {
+    font-weight: 300;
+}
+
+.box {
+    display: block;
+    font-size: 10px;
+    margin-bottom: 2px;
+}
+
+.invoice_key {
+    text-align: end;
+    padding-right: 10px;
+}
+
+.invoice_value {
+    text-align: start;
+    padding-left: 10px;
+}
+
+.recipent_details {
+    padding-left: 20px;
+}
+
+.grid_body {
+    padding: var(--outerPadding);
+}
+
+table {
+    font-size: medium;
+}
+
+table td {
+    padding: 2px;
+    text-align: center;
+}
+
+.table_box {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: small;
+}
+
+.service_colm {
+    text-align: left;
+    padding-right: 10px;
+    width: 70%
+}
+
+.total_colm {
+    text-align: right;
+}
+
+
+.grid_footer {
+    padding: var(--outerPadding);
+}
+
+.footer_key_colm {
+    text-align: left;
+    padding: 10px 0px 10px 0px;
+}
+
+.footer_val_colm {
+    padding: 10px 0px 10px 0px;
+    text-align: right;
+}
+
+.mu-logo-watermark-wrapper {
+    display: grid;
+    place-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.mu-logo-watermark {
+    opacity: 0.1;
+    height: 75vh;
+    size: 100px;
+}
+
+.mu-logo-watermark-wrapper img {
+    height: 500px;
+    width: 500px;
+}

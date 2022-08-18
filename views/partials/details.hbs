@@ -1,0 +1,42 @@
+<div class="grid_company">
+    <div class="vertical_line">
+        <center>
+            {{!-- https://www.apple.com/ac/structured-data/images/knowledge_graph_logo.png? --}}
+            <img src="{{data.company_details.company_logo}}" alt="logo">
+        </center>
+    </div>
+    <div class="company_details">
+        <span class="bold box">{{data.company_details.company_name}}</span>
+        <span class="box">{{data.company_details.company_addr}}</span>
+        <span class="box">{{data.company_details.company_phone}}</span>
+        <span class="box">{{data.company_details.company_email}}</span>
+        <span class="box">{{data.company_details.company_website}}</span>
+    </div>
+</div>
+<div class="grid_sized-box"></div>
+<div class="grid_invoice">
+    <div class="invoice_key">
+        <span class="box bold" style="font-size: 30px;"> INVOICE</span>
+        <span class="box light">INVOICE DATE</span>
+        <span class="box light">TOTAL DUE</span>
+    </div>
+    <div class="invoice_value">
+        <span class="box bold" style="font-size: 30px;">#{{data.invoice_id}}-0004</span>
+        <span class="box">{{data.date}}</span>
+        <span class="box">${{data.total}}</span>
+    </div>
+</div>
+<div class="grid_bill-to">
+    <div class="vertical_line">
+        <center>
+            <p class="light" style="font-size: 20px;">Bill To</p>
+        </center>
+    </div>
+    <div class="recipent_details">
+        <span class="bold box">{{data.recipent_name}}</span>
+        <span class="box">{{data.recipent_addr}}</span>
+        <span class="box">Newark, NK 19111</span>
+        <span class="box">{{data.recipent_phone}}</span>
+        <span class="box">{{data.recipent_email}}</span>
+    </div>
+</div>
